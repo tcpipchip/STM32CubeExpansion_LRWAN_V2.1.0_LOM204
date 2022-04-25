@@ -98,12 +98,12 @@ void SystemApp_Init(void)
   /* USER CODE END SystemApp_Init_1 */
 
   /*Initialize timer and RTC*/
-  UTIL_TIMER_Init();
+  //UTIL_TIMER_Init();
 
   Gpio_PreInit();
 
   /* Debug config : disable serial wires and DbgMcu pins settings */
-  DBG_Disable();
+  //DBG_Disable();
 
   /* Initializes the SW probes pins and the monitor RF pins via Alternate Function */
   DBG_ProbesInit();

@@ -160,7 +160,7 @@ void PWR_EnterSleepMode(void)
   /* USER CODE BEGIN EnterSleepMode_2 */
 
   /* USER CODE END EnterSleepMode_2 */
-  HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+  //HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
   /* USER CODE BEGIN EnterSleepMode_3 */
 
   /* USER CODE END EnterSleepMode_3 */

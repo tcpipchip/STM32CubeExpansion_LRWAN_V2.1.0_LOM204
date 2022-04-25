@@ -169,9 +169,9 @@ void LoRaWAN_Init(void)
 
   /* USER CODE BEGIN LoRaWAN_Init_1 */
 
-  LED_Init(LED_BLUE);
+  //LED_Init(LED_BLUE);
   LED_Init(LED_RED1);
-  LED_Init(LED_RED2);
+  //LED_Init(LED_RED2);
 
   /* Get LoRa APP version*/
   APP_LOG(TS_OFF, VLEVEL_M, "APP_VERSION:        V%X.%X.%X\r\n",
