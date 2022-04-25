@@ -215,12 +215,15 @@ void EXTI0_1_IRQHandler(void)
 {
 #if (defined(CMWX1ZZABZ0XX))
   HAL_EXTI_IRQHandler(&H_EXTI_0);
-  HAL_EXTI_IRQHandler(&H_EXTI_1);
 #endif
 }
 
 void EXTI2_3_IRQHandler(void)
 {
+  HAL_EXTI_IRQHandler(&H_EXTI_2);
+#if (defined(CMWX1ZZABZ0XX))
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+#endif
 #if (defined(SX1276MB1MAS) | defined(SX1276MB1LAS) | defined(SX1272MB2DAS))
   HAL_EXTI_IRQHandler(&H_EXTI_3);
 #endif
@@ -228,8 +231,8 @@ void EXTI2_3_IRQHandler(void)
 
 void EXTI4_15_IRQHandler(void)
 {
-  HAL_EXTI_IRQHandler(&H_EXTI_4);
-
+  HAL_EXTI_IRQHandler(&H_EXTI_12);
+  HAL_EXTI_IRQHandler(&H_EXTI_5);
 #if (defined(SX1276MB1MAS) | defined(SX1276MB1LAS) | defined(SX1272MB2DAS))
   HAL_EXTI_IRQHandler(&H_EXTI_5);
 #endif
@@ -239,7 +242,9 @@ void EXTI4_15_IRQHandler(void)
 #endif
 
 #if (defined(CMWX1ZZABZ0XX))
-  HAL_EXTI_IRQHandler(&H_EXTI_13);
+  //HAL_EXTI_IRQHandler(&H_EXTI_13);
+#else
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_13);
 #endif
 }
 

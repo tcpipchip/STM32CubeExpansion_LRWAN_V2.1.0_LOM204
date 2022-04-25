@@ -39,16 +39,16 @@ extern "C" {
 #define RADIO_SPI_BAUDRATE                  10000000U /* 16M Sigfox, 10M Lora */
 
 /* Ticket https://intbugzilla.st.com/show_bug.cgi?id=54043 */
-#define BUS_SPI1_SCK_GPIO_PIN            GPIO_PIN_3
+#define BUS_SPI1_SCK_GPIO_PIN            GPIO_PIN_5
 #define BUS_SPI1_MISO_GPIO_PIN           GPIO_PIN_6
 #define BUS_SPI1_MOSI_GPIO_PIN           GPIO_PIN_7
-#define BUS_SPI1_SCK_GPIO_PORT           GPIOB
+#define BUS_SPI1_SCK_GPIO_PORT           GPIOA
 #define BUS_SPI1_MISO_GPIO_PORT          GPIOA
 #define BUS_SPI1_MOSI_GPIO_PORT          GPIOA
 #define BUS_SPI1_SCK_GPIO_AF             GPIO_AF0_SPI1
 #define BUS_SPI1_MOSI_GPIO_AF            GPIO_AF0_SPI1
 #define BUS_SPI1_MISO_GPIO_AF            GPIO_AF0_SPI1
-#define BUS_SPI1_SCK_GPIO_CLK_ENABLE()   __HAL_RCC_GPIOB_CLK_ENABLE()
+#define BUS_SPI1_SCK_GPIO_CLK_ENABLE()   __HAL_RCC_GPIOA_CLK_ENABLE()
 #define BUS_SPI1_MOSI_GPIO_CLK_ENABLE()  __HAL_RCC_GPIOA_CLK_ENABLE()
 #define BUS_SPI1_MISO_GPIO_CLK_ENABLE()  __HAL_RCC_GPIOA_CLK_ENABLE()
 
