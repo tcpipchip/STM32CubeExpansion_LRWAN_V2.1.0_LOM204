@@ -99,7 +99,7 @@ void SystemApp_Init(void)
   /* USER CODE END SystemApp_Init_1 */
 
   /*Initialize timer and RTC*/
-  //UTIL_TIMER_Init();
+  UTIL_TIMER_Init();
 
   Gpio_PreInit();
 
