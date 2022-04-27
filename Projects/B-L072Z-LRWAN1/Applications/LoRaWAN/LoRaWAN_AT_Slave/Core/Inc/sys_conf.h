@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    lora_app.h
+  * @file    sys_conf.h
   * @author  MCD Application Team
-  * @brief   Header of application of the LRWAN Middleware
+  * @brief   Applicative configuration, e.g. : debug, trace, low power, sensors
   ******************************************************************************
   * @attention
   *
@@ -20,8 +20,8 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __LORA_APP_H__
-#define __LORA_APP_H__
+#ifndef __SYS_CONF_H__
+#define __SYS_CONF_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,37 +39,40 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 
-/* LoraWAN application configuration (Mw is configured by lorawan_conf.h) */
-#define ACTIVE_REGION                               LORAMAC_REGION_AU915
+/**
+  * @brief  Verbose level for all trace logs
+  */
+#define VERBOSE_LEVEL               VLEVEL_M
 
-/*!
- * LoRaWAN default endNode class port
- */
-#define LORAWAN_DEFAULT_CLASS                       CLASS_A
+/**
+  * @brief Enable trace logs
+  */
+#define APP_LOG_ENABLED             1
 
-/*!
- * LoRaWAN Adaptive Data Rate
- * @note Please note that when ADR is enabled the end-device should be static
- */
-#define LORAWAN_ADR_STATE                           LORAMAC_HANDLER_ADR_ON
+/**
+  * @brief Enable MCU Debugger pins (dbg serial wires, sbg spi, etc)
+  */
+#define DEBUGGER_ENABLED            0
 
-/*!
- * LoRaWAN Default data Rate Data Rate
- * @note Please note that LORAWAN_DEFAULT_DATA_RATE is used only when LORAWAN_ADR_STATE is disabled
- */
-#define LORAWAN_DEFAULT_DATA_RATE                   DR_0
+/**
+  * @brief Enable four wires usable as probes (two of them PROBE1 and PROBE2 used by the MW)
+  */
+#define PROBE_PINS_ENABLED          0
 
-/*!
- * Default Unicast ping slots periodicity
- *
- * \remark periodicity is equal to 2^LORAWAN_DEFAULT_PING_SLOT_PERIODICITY seconds
- *         example: 2^3 = 8 seconds. The end-device will open an Rx slot every 8 seconds.
- */
-#define LORAWAN_DEFAULT_PING_SLOT_PERIODICITY       4
+/**
+  * @brief Disable Low Power mode
+  * @note  0: LowPowerMode enabled. MCU enters stop2 mode, 1: LowPowerMode disabled. MCU enters sleep mode only
+  */
+#define LOW_POWER_DISABLE           0
 
 /* USER CODE BEGIN EC */
 
 /* USER CODE END EC */
+
+/* External variables --------------------------------------------------------*/
+/* USER CODE BEGIN EV */
+
+/* USER CODE END EV */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
@@ -77,11 +80,6 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-/**
-  * @brief  Init Lora Application
-  */
-void LoRaWAN_Init(void);
-
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
@@ -90,6 +88,6 @@ void LoRaWAN_Init(void);
 }
 #endif
 
-#endif /*__LORA_APP_H__*/
+#endif /* __SYS_CONF_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

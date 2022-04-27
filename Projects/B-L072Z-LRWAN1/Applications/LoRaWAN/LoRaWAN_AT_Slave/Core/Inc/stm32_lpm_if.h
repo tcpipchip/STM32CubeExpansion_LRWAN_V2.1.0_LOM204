@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    lora_app.h
+  * @file    stm32_lpm_if.h
   * @author  MCD Application Team
-  * @brief   Header of application of the LRWAN Middleware
+  * @brief   Header for Low Power Manager interface configuration
   ******************************************************************************
   * @attention
   *
@@ -20,14 +20,16 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __LORA_APP_H__
-#define __LORA_APP_H__
+#ifndef __STM32_LPM_IF_H__
+#define __STM32_LPM_IF_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32_lpm.h"
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -38,38 +40,14 @@ extern "C" {
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
-
-/* LoraWAN application configuration (Mw is configured by lorawan_conf.h) */
-#define ACTIVE_REGION                               LORAMAC_REGION_AU915
-
-/*!
- * LoRaWAN default endNode class port
- */
-#define LORAWAN_DEFAULT_CLASS                       CLASS_A
-
-/*!
- * LoRaWAN Adaptive Data Rate
- * @note Please note that when ADR is enabled the end-device should be static
- */
-#define LORAWAN_ADR_STATE                           LORAMAC_HANDLER_ADR_ON
-
-/*!
- * LoRaWAN Default data Rate Data Rate
- * @note Please note that LORAWAN_DEFAULT_DATA_RATE is used only when LORAWAN_ADR_STATE is disabled
- */
-#define LORAWAN_DEFAULT_DATA_RATE                   DR_0
-
-/*!
- * Default Unicast ping slots periodicity
- *
- * \remark periodicity is equal to 2^LORAWAN_DEFAULT_PING_SLOT_PERIODICITY seconds
- *         example: 2^3 = 8 seconds. The end-device will open an Rx slot every 8 seconds.
- */
-#define LORAWAN_DEFAULT_PING_SLOT_PERIODICITY       4
-
 /* USER CODE BEGIN EC */
 
 /* USER CODE END EC */
+
+/* External variables --------------------------------------------------------*/
+/* USER CODE BEGIN EV */
+
+/* USER CODE END EV */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
@@ -78,9 +56,38 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 /**
-  * @brief  Init Lora Application
+  * @brief Enters Low Power Off Mode
   */
-void LoRaWAN_Init(void);
+void PWR_EnterOffMode(void);
+
+/**
+  * @brief Exits Low Power Off Mode
+  */
+void PWR_ExitOffMode(void);
+
+/**
+  * @brief Enters Low Power Stop Mode
+  * @note ARM exists the function when waking up
+  */
+void PWR_EnterStopMode(void);
+
+/**
+  * @brief Exits Low Power Stop Mode
+  * @note Enable the pll at 32MHz
+  */
+void PWR_ExitStopMode(void);
+
+/**
+  * @brief Enters Low Power Sleep Mode
+  * @note ARM exits the function when waking up
+  */
+void PWR_EnterSleepMode(void);
+
+/**
+  * @brief Exits Low Power Sleep Mode
+  * @note ARM exits the function when waking up
+  */
+void PWR_ExitSleepMode(void);
 
 /* USER CODE BEGIN EFP */
 
@@ -90,6 +97,6 @@ void LoRaWAN_Init(void);
 }
 #endif
 
-#endif /*__LORA_APP_H__*/
+#endif /*__STM32_LPM_IF_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -1,9 +1,8 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    lora_app.h
-  * @author  MCD Application Team
-  * @brief   Header of application of the LRWAN Middleware
+  * @file    stm32l0xx_it.h
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
@@ -20,14 +19,14 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __LORA_APP_H__
-#define __LORA_APP_H__
+#ifndef __STM32L0xx_IT_H
+#define __STM32L0xx_IT_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
+/* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -38,35 +37,6 @@ extern "C" {
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
-
-/* LoraWAN application configuration (Mw is configured by lorawan_conf.h) */
-#define ACTIVE_REGION                               LORAMAC_REGION_AU915
-
-/*!
- * LoRaWAN default endNode class port
- */
-#define LORAWAN_DEFAULT_CLASS                       CLASS_A
-
-/*!
- * LoRaWAN Adaptive Data Rate
- * @note Please note that when ADR is enabled the end-device should be static
- */
-#define LORAWAN_ADR_STATE                           LORAMAC_HANDLER_ADR_ON
-
-/*!
- * LoRaWAN Default data Rate Data Rate
- * @note Please note that LORAWAN_DEFAULT_DATA_RATE is used only when LORAWAN_ADR_STATE is disabled
- */
-#define LORAWAN_DEFAULT_DATA_RATE                   DR_0
-
-/*!
- * Default Unicast ping slots periodicity
- *
- * \remark periodicity is equal to 2^LORAWAN_DEFAULT_PING_SLOT_PERIODICITY seconds
- *         example: 2^3 = 8 seconds. The end-device will open an Rx slot every 8 seconds.
- */
-#define LORAWAN_DEFAULT_PING_SLOT_PERIODICITY       4
-
 /* USER CODE BEGIN EC */
 
 /* USER CODE END EC */
@@ -77,11 +47,21 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-/**
-  * @brief  Init Lora Application
-  */
-void LoRaWAN_Init(void);
-
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void MemManage_Handler(void);
+void BusFault_Handler(void);
+void UsageFault_Handler(void);
+void SVC_Handler(void);
+void DebugMon_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
+void EXTI0_1_IRQHandler(void);
+void EXTI2_3_IRQHandler(void);
+void EXTI4_15_IRQHandler(void);
+void DMA1_Channel4_5_6_7_IRQHandler(void);
+void LPUART1_IRQHandler(void);
+void RTC_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
@@ -90,6 +70,6 @@ void LoRaWAN_Init(void);
 }
 #endif
 
-#endif /*__LORA_APP_H__*/
+#endif /* __STM32L0xx_IT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
